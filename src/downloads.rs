@@ -60,7 +60,9 @@ pub fn download_list(
 fn download_file(mut ep_data: EpData, dest: PathBuf, mut max_retries: usize) -> DownloadMsg {
     let agent_builder = ureq::builder()
         .timeout_connect(Duration::from_secs(10))
-        .timeout_read(Duration::from_secs(120));
+        .timeout_read(Duration::from_secs(120))
+        .redirects(10);
+
     #[cfg(feature = "native_tls")]
     let tls_connector = std::sync::Arc::new(native_tls::TlsConnector::new().unwrap());
     #[cfg(feature = "native_tls")]
