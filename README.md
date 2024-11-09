@@ -2,7 +2,11 @@
 
 # Note
 
-This project is no longer maintained. I no longer have the time, nor the motivation, to maintain it. It may still work for you, but I make no guarantees. I may come back to it at some point in the future, but no guarantees on that either.
+This is a fork of [shellcaster](https://github.com/jeff-hughes/shellcaster) by [Jeff Hughes](https://github.com/jeff-hughes).
+I have added the [pr](https://github.com/jeff-hughes/shellcaster/pull/64) to fix the issue of not following links.
+You can see other additions/fixes etc. in CHANGELOG.md
+
+Most of the Readme was written by him, including the reason for the naming, I've left that in.
 
 # Shellcaster
 
@@ -12,15 +16,6 @@ Shellcaster is a terminal-based podcast manager, built in Rust. It provides a te
 
 ## Installing shellcaster
 
-### On Arch Linux
-
-There are packages available for shellcaster in the Arch User Repository (AUR). Use `makepkg -si` ([see further details](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_and_upgrading_packages)) or your favourite AUR helper program to install one of the following packages:
-
-* [Stable source package](https://aur.archlinux.org/packages/shellcaster/)
-* [Stable binary package](https://aur.archlinux.org/packages/shellcaster-bin/)
-* [Latest development package](https://aur.archlinux.org/packages/shellcaster-git/)
-
-### On other Linux distributions and MacOS
 
 Currently the only option is to build from source.
 
@@ -37,22 +32,12 @@ First, ensure you have installed the necessary dependencies:
   * If you enable the "native_tls" feature of shellcaster (disabled by default), you will also need `libssl-dev`, the development headers for OpenSSL (not needed on MacOS).
   * If you enable the "sqlite-bundled" feature of shellcaster (disabled by default), `pkg-config` and `libsqlite3-dev` are not necessary.
 
-Next, there are two options for compiling the program: 
 
-1. You can install the latest version of the binary directly from crates.io with one command:
 
-```bash
-# for MacOS or Linux
-sudo cargo install shellcaster --no-track --root "/usr/local"  # add or remove any features with --features
-
-# or for Linux, without needing root permissions
-cargo install shellcaster --no-track --root "$HOME/.local"
-```
-
-2. You can clone the Github repo and compile it yourself:
+Clone the Github repo and compile it:
 
 ```bash
-git clone https://github.com/jeff-hughes/shellcaster.git
+git clone https://github.com/luvchurchill/shellcaster.git
 cd shellcaster
 cargo build --release  # add or remove any features with --features
 
@@ -200,6 +185,7 @@ The sample file above provides comments that should walk you through all the ava
 | Shift+D | Download all episodes |
 | x       | Delete downloaded file |
 | Shift+X | Delete all downloaded files |
+| u       | Unmark as downloaded |
 | r       | Remove selected feed/episode from list |
 | Shift+R | Remove all feeds/episodes from list |
 | 1       | Toggle played/unplayed filter |

@@ -1,4 +1,8 @@
 # Changelog
+## v2.0.2 (2024-11-09)
+Bug fix to follow links properly (see this [PR](https://github.com/jeff-hughes/shellcaster/pull/64))
+
+Fix for this [issue](https://github.com/jeff-hughes/shellcaster/issues/60) (Not being able to redownload epsiodes)
 
 ## v2.0.1 (2022-03-03)
 - Bug fix release to handle improper timeouts on HTTP requests

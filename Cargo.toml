@@ -1,16 +1,16 @@
 [package]
 name = "shellcaster"
-version = "2.0.1"
-authors = ["Jeff Hughes <jeff.hughes@gmail.com>"]
+version = "2.0.2"
+authors = ["Jeff Hughes <jeff.hughes@gmail.com>, luvchurchill"]
 edition = "2021"
 license = "GPL-3.0-or-later"
 description = "A terminal-based podcast manager to subscribe to and play podcasts."
 keywords = ["podcast", "terminal", "TUI", "curses"]
 categories = ["multimedia::audio", "command-line-interface"]
 
-homepage = "https://github.com/jeff-hughes/shellcaster"
-repository = "https://github.com/jeff-hughes/shellcaster"
-documentation = "https://github.com/jeff-hughes/shellcaster"
+homepage = "https://github.com/luvchurchill/shellcaster.git"
+repository = "https://github.com/luvchurchill/shellcaster.git"
+documentation = "https://github.com/luvchurchill/shellcaster.git"
 readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
