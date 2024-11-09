@@ -146,6 +146,12 @@ impl MainController {
                 Message::Dl(DownloadMsg::FileWriteError(_)) => {
                     self.notif_to_ui("Error downloading episode.".to_string(), true)
                 }
+                Message::Ui(UiMsg::UnmarkDownloaded(pod_id, ep_id)) => {
+                    if let Err(_) = self.unmark_downloaded(pod_id, ep_id) {
+                        self.notif_to_ui("Error unmarking episode as downloaded".to_string(), true);
+                    }
+                }
+                
 
                 Message::Ui(UiMsg::Delete(pod_id, ep_id)) => self.delete_file(pod_id, ep_id),
 
@@ -595,6 +601,20 @@ impl MainController {
             Err(err) => Err(err),
         };
     }
+    pub fn unmark_downloaded(&self, pod_id: i64, ep_id: i64) -> Result<()> {
+        let podcast = self.podcasts.clone_podcast(pod_id).unwrap();
+        let mut episode = podcast.episodes.clone_episode(ep_id).unwrap();
+        
+        let _ = self.db.remove_file(episode.id);
+        episode.path = None;
+        podcast.episodes.replace(ep_id, episode);
+        
+        self.podcasts.replace(pod_id, podcast);
+        self.update_filters(self.filters, true);
+        
+        Ok(())
+    }
+    
 
     /// Deletes a downloaded file for an episode from the user's local
     /// system.

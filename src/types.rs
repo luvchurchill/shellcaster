@@ -545,3 +545,4 @@ impl StringUtils for String {
         return self.graphemes(true).count();
     }
 }
+
