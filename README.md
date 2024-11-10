@@ -16,8 +16,7 @@ Shellcaster is a terminal-based podcast manager, built in Rust. It provides a te
 
 ## Installing shellcaster
 
-
-Currently the only option is to build from source.
+### Building from source
 
 First, ensure you have installed the necessary dependencies:
 
@@ -50,21 +49,6 @@ cp target/release/shellcaster ~/.local/bin
 
 See below for the list of available features when compiling.
 
-### On Windows
-
-Shellcaster is **not currently supported on Windows**, although some work has been done to try to get it working. Unicode support is weak, however, and there are issues when resizing the screen. You *might* have better luck using the new Windows Terminal, but this has not been tested. If you are a Windows user and want to help work out the bugs, pull requests are more than welcome!
-
-### List of compile features
-
-By default, only the `native_certs` feature is enabled. Here is the full list of features:
-
-* `sqlite_bundled`: When disabled, Rust will try to link shellcaster with SQLite header files already present on your system. If enabled, Rust will instead build SQLite from source and bundle the program with shellcaster. Bundling results in a larger application size, but may be suitable if you wish to use a different version of SQLite than the one on your system, or if you are on a system where installing SQLite is more difficult.
-
-* `native_tls`: By default, shellcaster uses the [rustls](https://crates.io/crates/rustls) crate to enable TLS support (i.e., URLs with https). This may cause issues with some podcast feeds that use earlier versions of TLS (below TLS v1.2). If you find that some feeds are unable to update, you can try enabling the `native_tls` feature, which will instead use the [native-tls](https://crates.io/crates/native-tls) crate -- which uses OpenSSL on Linux, Secure Transport on MacOS, and SChannel on Windows.
-
-* `native_certs`: Shellcaster will use the trusted certificate roots from the trust store for your OS in order to validate TLS certificates. Turning this feature off will instead use a bundled copy of the Mozilla Root program, which will only be updated when you recompile shellcaster. Thus, leaving this feature enabled is recommended.
-
-To specify different features when compiling, here is the format:
 
 ```bash
 cargo install --no-track --no-default-features --features "<feature1>,<feature2>" --root "$HOME/.local"
@@ -76,7 +60,11 @@ The format is the same when using `cargo build` instead:
 cargo build --release --no-default-features --features "<feature1>,<feature2>"
 cp target/release/shellcaster ~/.local/bin/
 ```
-
+### Download a Binary
+I've built a binary for Windows, which you can download from [here](https://github.com/luvchurchill/shellcaster/releases/latest).
+If you're running linux you should be compiling software yourself :)
+Note that Windows will complain about the executable being unsigned.
+Although in the original [README](https://github.com/jeff-hughes/shellcaster/blob/master/README.md) it says that it's not supported and buggy, I've tested the Windows exe a little and it seems to be working fine 
 ## Running shellcaster
 
 Easy peasy! In your terminal, run:
